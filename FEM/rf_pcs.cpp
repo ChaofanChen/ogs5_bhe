@@ -3284,21 +3284,21 @@ void CRFProcess::ConfigHeatTransport_BHE()
 
     pcs_number_of_secondary_nvals = 8;
     pcs_secondary_function_name[0] = "Heatflux_i_1";
-    pcs_secondary_function_unit[0] = "J/m^2";
+    pcs_secondary_function_unit[0] = "W/m";
     pcs_secondary_function_name[1] = "Heatflux_i_2";
-    pcs_secondary_function_unit[1] = "J/m^2";
+    pcs_secondary_function_unit[1] = "W/m";
     pcs_secondary_function_name[2] = "Heatflux_o_1";
-    pcs_secondary_function_unit[2] = "J/m^2";
+    pcs_secondary_function_unit[2] = "W/m";
     pcs_secondary_function_name[3] = "Heatflux_o_2";
-    pcs_secondary_function_unit[3] = "J/m^2";
+    pcs_secondary_function_unit[3] = "W/m";
     pcs_secondary_function_name[4] = "Heatflux_g_1";
-    pcs_secondary_function_unit[4] = "J/m^2";
+    pcs_secondary_function_unit[4] = "W/m";
     pcs_secondary_function_name[5] = "Heatflux_g_2";
-    pcs_secondary_function_unit[5] = "J/m^2";
+    pcs_secondary_function_unit[5] = "W/m";
     pcs_secondary_function_name[6] = "Heatflux_g_3";
-    pcs_secondary_function_unit[6] = "J/m^2";
+    pcs_secondary_function_unit[6] = "W/m";
     pcs_secondary_function_name[7] = "Heatflux_g_4";
-    pcs_secondary_function_unit[7] = "J/m^2";
+    pcs_secondary_function_unit[7] = "W/m";
 
     // initialize the BHE data structure
     ConfigBHEs(); 
@@ -13313,9 +13313,9 @@ CRFProcess* PCSGetMass(size_t component_number)
 				T_g = m_pcs->GetNodeValue(nn, ndxT_g);
 				T_s = m_pcs->GetNodeValue(global_ndxT_s, ndxT_s);
 
-				Heatflux_i_1 = -PHI_fig * (T_g - T_i) - PHI_ff * (T_o - T_i);
+				Heatflux_i_1 = -PHI_fig * (T_g - T_i);
 				Heatflux_o_1 = -PHI_ff * (T_i - T_o);
-				Heatflux_g_1 = -PHI_gs * (T_s - T_g) - PHI_fig * (T_i - T_g);
+				Heatflux_g_1 = -PHI_gs * (T_s - T_g);
 
 				m_pcs->SetNodeValue(nn, ndxHeatflux_i_1, Heatflux_i_1);
 				m_pcs->SetNodeValue(nn, ndxHeatflux_i_1 + 1, Heatflux_i_1);
