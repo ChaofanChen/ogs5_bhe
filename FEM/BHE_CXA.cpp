@@ -228,9 +228,9 @@ void BHE_CXA::calc_Pr()
 */
 void BHE_CXA::calc_heat_transfer_coefficients()
 {
-	_PHI_fig = 1.0 / _R_fig ;
-	_PHI_ff  = 1.0 / _R_ff ;
-	_PHI_gs = 1.0 / _R_gs ;
+	_PHI_fig = 1.0 / _R_fig;
+	_PHI_ff  = 1.0 / _R_ff;
+	_PHI_gs = 1.0 / _R_gs;
 }
 
 /**
@@ -422,12 +422,23 @@ double BHE_CXA::get_Tin_by_Tout(double T_out, double current_time = -1.0)
 		}
 		break;
     case BHE_BOUND_POWER_IN_WATT_CURVE_FIXED_FLOW_RATE:
-        // get the power value in the curve
-        power_tmp = GetCurveValue(power_in_watt_curve_idx, 0, current_time, &flag_valid);
-        // calculate the dT value based on fixed flow rate
-        delta_T_val = power_tmp / Q_r / heat_cap_r / rho_r;
-        // calcuate the new T_in 
-        T_in = T_out + delta_T_val;
+		if (fabs(power_tmp) > threshold)
+		{
+		    // get the power value in the curve
+            power_tmp = GetCurveValue(power_in_watt_curve_idx, 0, current_time, &flag_valid);
+            // calculate the dT value based on fixed flow rate
+            delta_T_val = power_tmp / Q_r / heat_cap_r / rho_r;
+            // calcuate the new T_in 
+            T_in = T_out + delta_T_val;
+		}
+		else
+		{
+			Q_r_tmp = 1.0e-06; // this has to be a small value to avoid division by zero
+			// update all values dependent on the flow rate
+			update_flow_rate(Q_r_tmp);
+			// calculate the new T_in
+			T_in = T_out;
+		}
         break;
 	case BHE_BOUND_BUILDING_POWER_IN_WATT_CURVE_FIXED_FLOW_RATE:
 		// get the building power value in the curve
