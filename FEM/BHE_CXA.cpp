@@ -282,11 +282,11 @@ void BHE_CXA::get_laplace_matrix(std::size_t idx_unknown, Eigen::MatrixXd & mat_
 	{
 	case 0:
 		// pipe i1, Eq. 23
-        laplace_coeff = (lambda_r + rho_r * heat_cap_r * alpha_L * _u.norm()) * CSA_i;
+        laplace_coeff = (lambda_r + rho_r * heat_cap_r * alpha_L * _u(0)) * CSA_i;
 		break;
 	case 1:
 		// pipe o1, Eq. 24
-        laplace_coeff = (lambda_r + rho_r * heat_cap_r * alpha_L * _u.norm()) * CSA_o;
+        laplace_coeff = (lambda_r + rho_r * heat_cap_r * alpha_L * _u(1)) * CSA_o;
 		break;
 	case 2:
 		// pipe g1, Eq. 25
@@ -422,10 +422,11 @@ double BHE_CXA::get_Tin_by_Tout(double T_out, double current_time = -1.0)
 		}
 		break;
     case BHE_BOUND_POWER_IN_WATT_CURVE_FIXED_FLOW_RATE:
+		// get the power value in the curve
+		power_tmp = GetCurveValue(power_in_watt_curve_idx, 0, current_time, &flag_valid);
+
 		if (fabs(power_tmp) > threshold)
 		{
-		    // get the power value in the curve
-            power_tmp = GetCurveValue(power_in_watt_curve_idx, 0, current_time, &flag_valid);
             // calculate the dT value based on fixed flow rate
             delta_T_val = power_tmp / Q_r / heat_cap_r / rho_r;
             // calcuate the new T_in 
