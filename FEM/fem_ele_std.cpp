@@ -9232,8 +9232,8 @@ void CFiniteElementStd::Assemble_LHS_BHE_Net(BHE::BHE_Net * bhe_net)
             
             // local matrix finished. 
 #ifdef _DEBUG
-            std::cout << "The local LHS penalty value matrix of the BHE network equation sytem is: \n";
-            std::cout << mat_LHS_penalty_value << std::endl;
+            // std::cout << "The local LHS penalty value matrix of the BHE network equation sytem is: \n";
+            // std::cout << mat_LHS_penalty_value << std::endl;
 #endif
 
             // Assemble onto the global matrix
@@ -9274,8 +9274,8 @@ void CFiniteElementStd::Assemble_LHS_BHE_Net(BHE::BHE_Net * bhe_net)
 
 													// local matrix finished. 
 #ifdef _DEBUG
-			std::cout << "The local LHS penalty value matrix of the BHE network equation sytem is: \n";
-			std::cout << mat_LHS_penalty_value << std::endl;
+			// std::cout << "The local LHS penalty value matrix of the BHE network equation sytem is: \n";
+			// std::cout << mat_LHS_penalty_value << std::endl;
 #endif
 
 			// Assemble onto the global matrix
@@ -9315,8 +9315,8 @@ void CFiniteElementStd::Assemble_LHS_BHE_Net(BHE::BHE_Net * bhe_net)
 
 													// local matrix finished. 
 #ifdef _DEBUG
-			std::cout << "The local LHS penalty value matrix of the BHE network equation sytem is: \n";
-			std::cout << mat_LHS_penalty_value << std::endl;
+			// std::cout << "The local LHS penalty value matrix of the BHE network equation sytem is: \n";
+			// std::cout << mat_LHS_penalty_value << std::endl;
 #endif
 
 			// Assemble onto the global matrix
@@ -9356,8 +9356,8 @@ void CFiniteElementStd::Assemble_LHS_BHE_Net(BHE::BHE_Net * bhe_net)
 
 													// local matrix finished. 
 #ifdef _DEBUG
-			std::cout << "The local LHS penalty value matrix of the BHE network equation sytem is: \n";
-			std::cout << mat_LHS_penalty_value << std::endl;
+			// std::cout << "The local LHS penalty value matrix of the BHE network equation sytem is: \n";
+			// std::cout << mat_LHS_penalty_value << std::endl;
 #endif
 
 			// Assemble onto the global matrix
@@ -9401,8 +9401,8 @@ void CFiniteElementStd::Assemble_LHS_BHE_Net(BHE::BHE_Net * bhe_net)
 
 														// local matrix finished. 
 #ifdef _DEBUG
-				std::cout << "The local LHS penalty value matrix of the BHE network equation sytem is: \n";
-				std::cout << mat_LHS_penalty_value << std::endl;
+				// std::cout << "The local LHS penalty value matrix of the BHE network equation sytem is: \n";
+				// std::cout << mat_LHS_penalty_value << std::endl;
 #endif
 
 				// Assemble onto the global matrix
